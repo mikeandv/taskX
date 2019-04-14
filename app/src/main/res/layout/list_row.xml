@@ -26,19 +26,57 @@
         android:text="TextView" />
 
 
-    <TextView
-        android:id="@+id/end_addr"
-        style="@style/Text"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/order_date"
-        android:text="TextView" />
+        android:layout_margin="4dp"
+        app:srcCompat="@drawable/from" />
 
     <TextView
         android:id="@+id/start_addr"
         style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/order_date"
+        android:layout_toEndOf="@+id/imageView3"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/start_addr_city"
+        style="@style/Text.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_addr"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/imageView3"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_addr_city"
+        android:layout_margin="4dp"
+        app:srcCompat="@drawable/to" />
+
+    <TextView
+        android:id="@+id/end_addr"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_addr_city"
+        android:layout_toEndOf="@+id/imageView4"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/end_addr_city"
+        style="@style/Text.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/end_addr"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/imageView4"
         android:text="TextView" />
 </RelativeLayout>

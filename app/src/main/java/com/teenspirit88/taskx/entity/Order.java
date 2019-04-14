@@ -87,4 +87,15 @@ public class Order implements Serializable {
             return null;
         }
     }
+
+    public long getDateAsLong() {
+        SimpleDateFormat utcForm = new SimpleDateFormat(FORMAT, Locale.ROOT);
+        try {
+            Date date = utcForm.parse(orderTime);
+            return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

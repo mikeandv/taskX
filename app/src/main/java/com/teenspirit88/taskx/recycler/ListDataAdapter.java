@@ -47,14 +47,18 @@ public class ListDataAdapter extends RecyclerView.Adapter<ListDataAdapter.ListVi
     class ListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView endAddressTxtField;
+        private TextView endAddressCityField;
         private TextView startAddressTxtField;
+        private TextView startAddressCityField;
         private TextView orderPriceTxtField;
         private TextView orderDateTxtField;
 
         public ListViewHolder(View itemView) {
             super(itemView);
             endAddressTxtField = itemView.findViewById(R.id.end_addr);
+            endAddressCityField = itemView.findViewById(R.id.end_addr_city);
             startAddressTxtField = itemView.findViewById(R.id.start_addr);
+            startAddressCityField = itemView.findViewById(R.id.start_addr_city);
             orderPriceTxtField = itemView.findViewById(R.id.order_price);
             orderDateTxtField = itemView.findViewById(R.id.order_date);
 
@@ -70,7 +74,9 @@ public class ListDataAdapter extends RecyclerView.Adapter<ListDataAdapter.ListVi
         public void bind(Order order) {
             //Заполняем вью значениеями обекта заказа
             endAddressTxtField.setText(order.getEndAddress().getAddress());
+            endAddressCityField.setText(order.getEndAddress().getCity());
             startAddressTxtField.setText(order.getStartAddress().getAddress());
+            startAddressCityField.setText(order.getStartAddress().getCity());
             orderPriceTxtField.setText(order.getprice().getAmountAndSymbol());
             orderDateTxtField.setText(order.getFormatedOrderDate(DAY_MONTH_FORMAT));
         }

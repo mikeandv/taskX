@@ -17,8 +17,8 @@ public class HttpTaskJson extends AsyncTask<String, Void, List<Order>> {
     protected List<Order> doInBackground(String... params) {
         String st = null;
         try {
-            Type listtype = new TypeToken<ArrayList<Order>>(){}.getType();
-            return new Gson().fromJson(DataAccess.getDataFromUrl("https://www.roxiemobile.ru/careers/test/" + params[0]), listtype);
+            Type listType = new TypeToken<ArrayList<Order>>(){}.getType();
+            return new Gson().fromJson(DataAccess.getDataFromUrl("https://www.roxiemobile.ru/careers/test/" + params[0]), listType);
         } catch (IOException e) {
             e.printStackTrace();
         }

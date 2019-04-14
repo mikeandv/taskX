@@ -17,6 +17,8 @@ import com.teenspirit88.taskx.recycler.OnClickListener;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -82,9 +84,18 @@ public class MainActivity extends AppCompatActivity {
         //Создание задачи на загрузку данных с ресура (JSON)
         HttpTaskJson ht = new HttpTaskJson();
         ht.execute("orders.json");
+        List<Order> orders;
 
         try {
-            return ht.get();
+            orders = ht.get();
+            Collections.sort(orders, new Comparator<Order>() {
+                @Override
+                public int compare(Order order, Order t1) {
+                    return Long.compare(order.getDateAsLong(), t1.getDateAsLong());
+                }
+            });
+            Collections.reverse(orders);
+            return orders;
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
