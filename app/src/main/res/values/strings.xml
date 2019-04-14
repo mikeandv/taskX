@@ -4,4 +4,6 @@
     <string name="driver_label">Driver</string>
     <string name="about_ride">About</string>
     <string name="about_driver">Driver</string>
+    <string name="from_label">From:</string>
+    <string name="to_label">To:</string>
 </resources>

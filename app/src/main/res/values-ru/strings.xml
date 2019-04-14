@@ -5,4 +5,6 @@
     <string name="driver_label">Водитель</string>
     <string name="about_ride">О поездке</string>
     <string name="about_driver">Водитель</string>
+    <string name="from_label">Откуда:</string>
+    <string name="to_label">Куда:</string>
 </resources>

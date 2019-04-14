@@ -21,7 +21,9 @@ public class OrderInfoActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView orderDateInfo;
     private TextView startAddrInfo;
+    private TextView startAddrCityInfo;
     private TextView endAddrInfo;
+    private TextView endAddrCityInfo;
     private TextView orderPriceinfo;
     private TextView orderDriver;
     private TextView orderVehicleModel;
@@ -104,7 +106,9 @@ public class OrderInfoActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.car_img);
         orderDateInfo = (TextView) findViewById(R.id.order_date_info);
         startAddrInfo = (TextView) findViewById(R.id.start_addr_info);
+//        startAddrCityInfo = (TextView) findViewById(R.id.start_addr_city_info);
         endAddrInfo = (TextView) findViewById(R.id.end_addr_info);
+//        endAddrCityInfo = (TextView) findViewById(R.id.end_addr_city_info);
         orderPriceinfo = (TextView) findViewById(R.id.price_info);
         orderDriver = (TextView) findViewById(R.id.driver_name);
         orderVehicleModel = (TextView) findViewById(R.id.vehicle_model);
@@ -113,7 +117,9 @@ public class OrderInfoActivity extends AppCompatActivity {
         imageView.setImageBitmap(carImage);
         orderDateInfo.setText(order.getFormatedOrderDate(DAY_MONTH_TIME_FORMAT));
         startAddrInfo.setText(order.getStartAddress().getAddress());
+//        startAddrCityInfo.setText(order.getStartAddress().getCity());
         endAddrInfo.setText(order.getEndAddress().getAddress());
+//        endAddrCityInfo.setText(order.getEndAddress().getCity());
         orderPriceinfo.setText(order.getprice().getAmountAndSymbol());
         orderDriver.setText(order.getVehicle().getDriverName());
         orderVehicleModel.setText(order.getVehicle().getModelName());
