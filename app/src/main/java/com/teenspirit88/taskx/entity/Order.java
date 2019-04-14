@@ -2,8 +2,13 @@ package com.teenspirit88.taskx.entity;
 
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Order implements Serializable {
+    private static final String FORMAT="yyyy-MM-dd'T'HH:mm:ssZ";
 
     private int id;
     private Address startAddress;
@@ -67,5 +72,19 @@ public class Order implements Serializable {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public String getFormatedOrderDate(String format) {
+        SimpleDateFormat utcForm = new SimpleDateFormat(FORMAT, Locale.ROOT);
+        SimpleDateFormat appForm = new SimpleDateFormat(format, Locale.getDefault());
+
+        try{
+            Date date = utcForm.parse(orderTime);
+            return appForm.format(date);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

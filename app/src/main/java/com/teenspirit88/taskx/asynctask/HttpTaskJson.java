@@ -1,4 +1,4 @@
-package com.teenspirit88.taskx;
+package com.teenspirit88.taskx.asynctask;
 
 import android.os.AsyncTask;
 
@@ -12,22 +12,21 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HttpTask extends AsyncTask<Void, Void, List<Order>> {
+public class HttpTaskJson extends AsyncTask<String, Void, List<Order>> {
     @Override
-    protected List<Order> doInBackground(Void... voids) {
+    protected List<Order> doInBackground(String... params) {
         String st = null;
         try {
-            st = DataAccess.getDataFromUrl("https://www.roxiemobile.ru/careers/test/orders.json");
+            Type listtype = new TypeToken<ArrayList<Order>>(){}.getType();
+            return new Gson().fromJson(DataAccess.getDataFromUrl("https://www.roxiemobile.ru/careers/test/" + params[0]), listtype);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Type listtype = new TypeToken<ArrayList<Order>>(){}.getType();
-        return new Gson().fromJson(st, listtype);
+        return null;
     }
 
     @Override
     protected void onPostExecute(List<Order> orders) {
         super.onPostExecute(orders);
-
     }
 }

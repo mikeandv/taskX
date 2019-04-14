@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Task X</string>
+    <string name="price_label">Стоимость проезда</string>
+    <string name="driver_label">Водитель</string>
+    <string name="about_ride">О поездке</string>
+    <string name="about_driver">Водитель</string>
+</resources>

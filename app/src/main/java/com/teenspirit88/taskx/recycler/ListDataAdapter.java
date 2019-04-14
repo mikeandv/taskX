@@ -11,17 +11,12 @@ import android.widget.TextView;
 import com.teenspirit88.taskx.R;
 import com.teenspirit88.taskx.entity.Order;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class ListDataAdapter extends RecyclerView.Adapter<ListDataAdapter.ListViewHolder> {
     private List<Order> orderList = new ArrayList<>();
     private OnClickListener onClickListener;
-    private static final String FORMAT="yyyy-MM-dd'T'HH:mm:ssZ";
     private static final String DAY_MONTH_FORMAT = "d MMMM";
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
@@ -49,18 +44,6 @@ public class ListDataAdapter extends RecyclerView.Adapter<ListDataAdapter.ListVi
         return orderList.size();
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        if(isPositionHeader(position)) {
-//            return TYPE_HEADER;
-//        }
-//        return TYPE_ITEM;
-//    }
-
-//    private boolean isPositionHeader(int position) {
-//        return position == 0;
-//    }
-
     class ListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView endAddressTxtField;
@@ -85,31 +68,16 @@ public class ListDataAdapter extends RecyclerView.Adapter<ListDataAdapter.ListVi
         }
 
         public void bind(Order order) {
+            //Заполняем вью значениеями обекта заказа
             endAddressTxtField.setText(order.getEndAddress().getAddress());
             startAddressTxtField.setText(order.getStartAddress().getAddress());
             orderPriceTxtField.setText(order.getprice().getAmountAndSymbol());
-            orderDateTxtField.setText(getFormatedDate(order.getOrderTime()));
-        }
-
-        private String getFormatedDate(String rDate) {
-            SimpleDateFormat utcForm = new SimpleDateFormat(FORMAT, Locale.ROOT);
-            SimpleDateFormat appForm = new SimpleDateFormat(DAY_MONTH_FORMAT, Locale.getDefault());
-
-            try{
-                Date date = utcForm.parse(rDate);
-                return appForm.format(date);
-            }
-            catch (ParseException e) {
-                // TODO: 12/04/2019 добавить логирование или вывод ошибки
-                return null;
-            }
+            orderDateTxtField.setText(order.getFormatedOrderDate(DAY_MONTH_FORMAT));
         }
     }
 
     public void setItems(List<Order> orders) {
-        for(int i = 0; i < 5; i++) {
-            orderList.addAll(orders);
-        }
+        orderList.addAll(orders);
         notifyDataSetChanged();
     }
 

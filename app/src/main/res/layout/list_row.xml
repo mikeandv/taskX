@@ -5,53 +5,40 @@
     android:layout_height="wrap_content"
     android:elevation="4dp"
     android:padding="16dp"
-    android:background="@drawable/relative_layot_custom">
+    android:background="@drawable/relative_layout_custom">
 
     <TextView
         android:id="@+id/order_date"
+        style="@style/Text.Primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerHorizontal="false"
-        android:text="TextView"
-        style="@style/Text.Primary"/>
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/order_price"
+        style="@style/Text.Primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="false"
-        android:text="TextView"
-        style="@style/Text.Primary" />
+        android:text="TextView" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/order_date"
-        app:srcCompat="@drawable/sharp_my_location_black_18" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/imageView2"
-        app:srcCompat="@drawable/sharp_place_black_18" />
 
     <TextView
         android:id="@+id/end_addr"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/order_date"
-        android:layout_toEndOf="@+id/imageView2"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/start_addr"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/end_addr"
-        android:layout_toEndOf="@+id/imageView2"
         android:text="TextView" />
 </RelativeLayout>

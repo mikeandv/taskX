@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">eKassirtask</string>
+    <string name="app_name">Task X</string>
+    <string name="price_label">Fare</string>
+    <string name="driver_label">Driver</string>
+    <string name="about_ride">About</string>
+    <string name="about_driver">Driver</string>
 </resources>
