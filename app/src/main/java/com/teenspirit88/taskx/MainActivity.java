@@ -2,11 +2,15 @@ package com.teenspirit88.taskx;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.widget.Toast;
 
 
 import com.teenspirit88.taskx.asynctask.HttpTaskJson;
@@ -46,10 +50,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Инициализация RecyclerView
-        initRecyclerView();
-        loadData();
-        cleanCacheFiles(this);
+        if(isOnline(this)) {
+            //Инициализация RecyclerView
+            initRecyclerView();
+            loadData();
+            cleanCacheFiles(this);
+        } else {
+            Toast t = Toast.makeText(this, "Отсутствует подключение к интернету...", Toast.LENGTH_LONG);
+            t.setGravity(Gravity.CENTER, 0, 0);
+            t.show();
+        }
+
     }
 
     private void initRecyclerView() {
@@ -126,6 +137,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, 0, CACHE_LIFETIME/60_000, TimeUnit.MINUTES);
+    }
+
+    public static boolean isOnline(Context context)
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting())
+        {
+            return true;
+        }
+        return false;
     }
 
 }
